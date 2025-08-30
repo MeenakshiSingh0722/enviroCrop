@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Exo+2:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* EnviroCorp 2070 - Futuristic Climate Control Design System */
+
+@layer base {
+  :root {
+    /* Deep Space Color Palette */
+    --space-void: 240 15% 8%;
+    --space-deep: 245 20% 12%;
+    --space-medium: 250 25% 18%;
+    --space-light: 255 30% 25%;
+    
+    /* Neon Accent Colors */
+    --neon-cyan: 180 100% 50%;
+    --neon-electric: 200 100% 65%;
+    --neon-green: 120 100% 50%;
+    --neon-purple: 280 100% 70%;
+    --neon-orange: 30 100% 60%;
+    
+    /* Holographic Effects */
+    --holo-primary: 200 80% 60%;
+    --holo-secondary: 280 70% 65%;
+    --holo-accent: 120 85% 55%;
+    
+    /* Glass Morphism */
+    --glass-bg: 240 20% 15%;
+    --glass-border: 200 50% 40%;
+    --glass-highlight: 200 80% 80%;
+    
+    /* Semantic Tokens */
+    --background: var(--space-void);
+    --foreground: var(--glass-highlight);
+    
+    --card: var(--glass-bg);
+    --card-foreground: var(--glass-highlight);
+    
+    --popover: var(--space-deep);
+    --popover-foreground: var(--glass-highlight);
+    
+    --primary: var(--neon-cyan);
+    --primary-foreground: var(--space-void);
+    
+    --secondary: var(--space-medium);
+    --secondary-foreground: var(--glass-highlight);
+    
+    --muted: var(--space-light);
+    --muted-foreground: 200 40% 70%;
+    
+    --accent: var(--neon-electric);
+    --accent-foreground: var(--space-void);
+    
+    --destructive: var(--neon-orange);
+    --destructive-foreground: var(--space-void);
+    
+    --border: var(--glass-border);
+    --input: var(--glass-bg);
+    --ring: var(--neon-cyan);
+    
+    --radius: 1rem;
+    
+    /* Custom Gradients */
+    --gradient-space: linear-gradient(135deg, hsl(var(--space-void)), hsl(var(--space-deep)));
+    --gradient-neon: linear-gradient(45deg, hsl(var(--neon-cyan)), hsl(var(--neon-electric)));
+    --gradient-holographic: linear-gradient(90deg, hsl(var(--holo-primary)), hsl(var(--holo-secondary)), hsl(var(--holo-accent)));
+    --gradient-glass: linear-gradient(135deg, hsla(var(--glass-bg), 0.4), hsla(var(--glass-bg), 0.1));
+    
+    /* Shadows & Glows */
+    --shadow-neon: 0 0 20px hsl(var(--neon-cyan) / 0.3), 0 0 40px hsl(var(--neon-cyan) / 0.2);
+    --shadow-glass: 0 8px 32px hsla(var(--space-void), 0.3);
+    --glow-text: 0 0 10px hsl(var(--neon-cyan) / 0.8);
+    --glow-border: 0 0 15px hsl(var(--neon-electric) / 0.6);
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.3s ease-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-exo;
+    background: var(--gradient-space);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Glass Morphism Card */
+  .glass-card {
+    @apply backdrop-blur-xl bg-gradient-to-br from-card/40 to-card/10 border border-border/30 rounded-2xl;
+    box-shadow: var(--shadow-glass);
+  }
+  
+  /* Neon Text Effects */
+  .neon-text {
+    color: hsl(var(--neon-cyan));
+    text-shadow: var(--glow-text);
+  }
+  
+  .neon-text-green {
+    color: hsl(var(--neon-green));
+    text-shadow: 0 0 10px hsl(var(--neon-green) / 0.8);
+  }
+  
+  .neon-text-purple {
+    color: hsl(var(--neon-purple));
+    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.8);
+  }
+  
+  /* Holographic Elements */
+  .holographic {
+    background: var(--gradient-holographic);
+    background-size: 200% 200%;
+    animation: holographic-shift 3s ease-in-out infinite;
+  }
+  
+  .holographic-text {
+    background: var(--gradient-holographic);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographic-shift 3s ease-in-out infinite;
+  }
+  
+  /* Floating Animation */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+  
+  /* Pulse Glow */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  /* Weather Particles */
+  .rain-particle {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: linear-gradient(transparent, hsl(var(--neon-cyan)));
+    animation: rain-fall 1s linear infinite;
+  }
+  
+  .snow-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    animation: snow-fall 3s linear infinite;
+  }
+  
+  /* Scan Line Effect */
+  .scan-lines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--neon-cyan) / 0.1) 2px,
+      hsl(var(--neon-cyan) / 0.1) 4px
+    );
+    pointer-events: none;
+  }
+}
+
+@keyframes holographic-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes floating {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--neon-cyan) / 0.6), 0 0 60px hsl(var(--neon-cyan) / 0.4);
+  }
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes globe-rotate {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+@keyframes data-stream {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
